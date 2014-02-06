@@ -14,14 +14,14 @@
 	</select>
 	<?php echo \core\HTML_Tag::span_error('album', $datos); ?>
 	<br />
-	Nombre: <input id='nombre' name='nombre' type='text' size='100'  maxlength='100' value='<?php echo \core\Array_Datos::values('nombre', $datos); ?>'/>
-	<?php echo \core\HTML_Tag::span_error('nombre', $datos); ?>
+	Artista: <input id='artista' name='artista' type='text' size='100'  maxlength='100' value='<?php echo \core\Array_Datos::values('artista', $datos); ?>'/>
+	<?php echo \core\HTML_Tag::span_error('artista', $datos); ?>
 	<br />
 	Precio: <input id='precio' name='precio' type='text' size='20'  maxlength='20' value='<?php echo \core\Array_Datos::values('precio', $datos); ?>'/>
 	<?php echo \core\HTML_Tag::span_error('precio', $datos); ?>
 	<br />
-	Unidades en Stock: <input id='unidades_stock' name='unidades_stock' type='text' size='20'  maxlength='20' value='<?php echo \core\Array_Datos::values('unidades_stock', $datos); ?>'/>
-	<?php echo \core\HTML_Tag::span_error('unidades_stock', $datos); ?>
+	Fecha de lanzamiento: <input id='fecha_lanzamiento' name='fecha_lanzamiento' type='text' size='20'  maxlength='20' value='<?php echo \core\Array_Datos::values('fecha_lanzamiento', $datos); ?>'/>
+	<?php echo \core\HTML_Tag::span_error('fecha_lanzamiento', $datos); ?>
 	<br />
 	<?php echo \core\HTML_Tag::span_error('errores_validacion', $datos); ?>
 	

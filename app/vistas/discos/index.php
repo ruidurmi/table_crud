@@ -12,11 +12,11 @@
 	<table border='1'>
 		<thead>
 			<tr>
-				<th>categoría</th>
-				<th>nombre</th>
-				<th>precio</th>
-				<th>unidades en stock</th>
-				<th>acciones</th>
+				<th>Album</th>
+				<th>Artista</th>
+				<th>Precio</th>
+                                <th>Fecha de lanzamiento</th>
+                                <th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,13 +25,13 @@
 			{
 				echo "
 					<tr>
-						<td>{$fila['categoria_nombre']}</td>
-						<td>{$fila['nombre']}</td>
+						<td>{$fila['album']}</td>
+						<td>{$fila['artista']}</td>
 						<td>".\core\Conversiones::decimal_punto_a_coma_y_miles($fila['precio'])."</td>
-						<td>".\core\Conversiones::decimal_punto_a_coma_y_miles($fila['unidades_stock'])."</td>
+                                                <td>{$fila['fecha_lanzamiento']}</td>
 						<td>
-							<a class='boton' href='?menu=articulos&submenu=form_modificar&id={$fila['id']}' >modificar</a>
-							<a class='boton' href='?menu=articulos&submenu=form_borrar&id={$fila['id']}' >borrar</a>
+							<a class='boton' href='?menu=discos&submenu=form_modificar&id={$fila['id']}' >modificar</a>
+							<a class='boton' href='?menu=discos&submenu=form_borrar&id={$fila['id']}' >borrar</a>
 						</td>
 					</tr>
 					";
@@ -39,7 +39,7 @@
 			echo "
 				<tr>
 					<td colspan='4'></td>
-					<td><a class='boton' href='?menu=articulos&submenu=form_insertar' >insertar</a></td>
+					<td><a class='boton' href='?menu=discos&submenu=form_insertar' >insertar</a></td>
 				</tr>
 			";
 			?>
