@@ -6,12 +6,12 @@ class discos extends \core\Controlador {
 	
 	
 	/**
-	 * Presenta una <table> con las filas de la tabla con igual nombre que la clase.
+	 * Presenta una <table> con las filas de la tabla con igual album que la clase.
 	 * @param array $datos
 	 */
 	public function index(array $datos=array()) {
 		
-		$clausulas['order_by'] = 'nombre';
+		$clausulas['order_by'] = 'album';
 		$datos["filas"] = \modelos\Datos_SQL::table("discos")->select( $clausulas ); // Recupera todas las filas ordenadas
 		$datos['view_content'] = \core\Vista::generar(__FUNCTION__, $datos);
 		$http_body = \core\Vista_Plantilla::generar('plantilla_principal', $datos);
@@ -22,7 +22,7 @@ class discos extends \core\Controlador {
 	
 	public function form_insertar(array $datos=array()) {
 		
-		$clausulas['order_by'] = " nombre ";
+		$clausulas['order_by'] = " album ";
 		$datos['discos'] = \modelos\Datos_SQL::table("discos")->select($clausulas);
 		
 		$datos['view_content'] = \core\Vista::generar(__FUNCTION__, $datos);
@@ -84,7 +84,7 @@ class discos extends \core\Controlador {
 					$datos['values']['precio'] = \core\Conversiones::decimal_punto_a_coma_y_miles($datos['values']['precio']);
 					$datos['values']['unidades_stock'] = \core\Conversiones::decimal_punto_a_coma_y_miles($datos['values']['unidades_stock']);
 					
-					$clausulas = array('order_by' => " nombre ");
+					$clausulas = array('order_by' => " album ");
 					$datos['discos'] = \modelos\Datos_SQL::table("discos")->select( $clausulas);
 				}
 			}
@@ -146,7 +146,7 @@ class discos extends \core\Controlador {
 				$datos['values'] = $filas[0];
 				$datos['values']['precio'] = \core\Conversiones::decimal_punto_a_coma_y_miles($datos['values']['precio']);
 				$datos['values']['unidades_stock'] = \core\Conversiones::decimal_punto_a_coma_y_miles($datos['values']['unidades_stock']);
-				$clausulas = array('order_by' => " nombre ");
+				$clausulas = array('order_by' => " album ");
 				$datos['discos'] = \modelos\Datos_SQL::select( $clausulas, 'discos');
 			}
 		}
@@ -195,12 +195,12 @@ class discos extends \core\Controlador {
 	public function listado_pdf(array $datos=array()) {
 		
 		$validaciones = array(
-			"nombre" => "errores_texto"
+			"album" => "errores_texto"
 		);
 		\core\Validaciones::errores_validacion_request($validaciones, $datos);
-		if (isset($datos['values']['nombre'])) 
-			$clausulas['where'] = " nombre like '%{$datos['values']['nombre']}%'";
-		$clausulas['order_by'] = 'nombre';
+		if (isset($datos['values']['album'])) 
+			$clausulas['where'] = " album like '%{$datos['values']['album']}%'";
+		$clausulas['order_by'] = 'album';
 		$datos['filas'] = \modelos\Datos_SQL::select( $clausulas , 'discos');		
 		
 		$datos['html_para_pdf'] = \core\Vista::generar(__FUNCTION__, $datos);
@@ -231,12 +231,12 @@ class discos extends \core\Controlador {
 	public function listado_js(array $datos=array()) {
 		
 		$validaciones = array(
-			"nombre" => "errores_texto"
+			"album" => "errores_texto"
 		);
 		\core\Validaciones::errores_validacion_request($validaciones, $datos);
-		if (isset($datos['values']['nombre'])) 
-			$clausulas['where'] = " nombre like '%{$datos['values']['nombre']}%'";
-		$clausulas['order_by'] = 'nombre';
+		if (isset($datos['values']['album'])) 
+			$clausulas['where'] = " album like '%{$datos['values']['album']}%'";
+		$clausulas['order_by'] = 'album';
 		$datos['filas'] = \modelos\Datos_SQL::select($clausulas, 'discos');
 				
 		$datos['contenido_principal'] = \core\Vista::generar(__FUNCTION__, $datos);
@@ -254,12 +254,12 @@ class discos extends \core\Controlador {
 	public function listado_js_array(array $datos=array()) {
 		
 		$validaciones = array(
-			"nombre" => "errores_texto"
+			"album" => "errores_texto"
 		);
 		\core\Validaciones::errores_validacion_request($validaciones, $datos);
-		if (isset($datos['values']['nombre'])) 
-			$clausulas['where'] = " nombre like '%{$datos['values']['nombre']}%'";
-		$clausulas['order_by'] = 'nombre';
+		if (isset($datos['values']['album'])) 
+			$clausulas['where'] = " album like '%{$datos['values']['album']}%'";
+		$clausulas['order_by'] = 'album';
 		$datos['filas'] = \modelos\Datos_SQL::select( $clausulas, 'discos');
 				
 		$datos['contenido_principal'] = \core\Vista::generar(__FUNCTION__, $datos);
@@ -279,12 +279,12 @@ class discos extends \core\Controlador {
 	public function listado_xml(array $datos=array()) {
 		
 		$validaciones = array(
-			"nombre" => "errores_texto"
+			"album" => "errores_texto"
 		);
 		\core\Validaciones::errores_validacion_request($validaciones, $datos);
-		if (isset($_datos['values']['nombre'])) 
-			$clausulas['where'] = " nombre like '%{$_datos['values']['nombre']}%'";
-		$clausulas['order_by'] = 'nombre';
+		if (isset($_datos['values']['album'])) 
+			$clausulas['where'] = " album like '%{$_datos['values']['album']}%'";
+		$clausulas['order_by'] = 'album';
 		$datos['filas'] = \modelos\Datos_SQL::select( $clausulas, 'discos');
 				
 		$datos['contenido_principal'] = \core\Vista::generar(__FUNCTION__, $datos);
@@ -304,12 +304,12 @@ class discos extends \core\Controlador {
 	public function listado_xls(array $datos=array()) {
 		
 		$validaciones = array(
-			"nombre" => "errores_texto"
+			"album" => "errores_texto"
 		);
 		\core\Validaciones::errores_validacion_request($validaciones, $datos);
-		if (isset($_datos['values']['nombre'])) 
-			$clausulas['where'] = " nombre like '%{$_datos['values']['nombre']}%'";
-		$clausulas['order_by'] = 'nombre';
+		if (isset($_datos['values']['album'])) 
+			$clausulas['where'] = " album like '%{$_datos['values']['album']}%'";
+		$clausulas['order_by'] = 'album';
 		$datos['filas'] = \modelos\Datos_SQL::select($clausulas, 'discos');
 				
 		$datos['contenido_principal'] = \core\Vista::generar(__FUNCTION__, $datos);
